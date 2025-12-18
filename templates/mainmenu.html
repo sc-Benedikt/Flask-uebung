@@ -1,5 +1,10 @@
 <body>
 
-    <h1>hallo {{ name }}</h1>
+    <h1>Main menu</h1>
+    <h3>hallo {{ session["username"] }} </h3>
+
+    <form action="/logout" method="get">
+        <button type="submit">logout</button>
+    </form>
 
 </body>
