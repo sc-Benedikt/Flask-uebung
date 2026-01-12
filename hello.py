@@ -68,8 +68,31 @@ def neuer_acc():
 def logout():
 
     session.pop('username', None)
-    return redirect(url_for("test"))
     return redirect("/")
 
+@app.route("/löschen")
+def delete():
+    name = session.get("username")
+    with open(USER_FILE, "r", encoding="utf-8") as f:
+        users = json.load(f)
+        del users[name]
+        with open(r"C:\Übungen Python\git\Flask-uebung\user.json", "w") as f:
+            f.write(json.dumps(users, indent=4))
+        session.clear()
+        return render_template("/eingabefeld.html")
+
+@app.route("/daten_aendern")
+def ame_aendern():
+    return render_template("/rename.html")
+
+@app.route("/")
+def name_abgeaendert():
+    old_name = session.get("username")
+    new_name = request.get("username", " ")
+    with open(USER_FILE, "r", encoding="utf-8") as f:
+        users = json.load(f)
+        users
+    
+    
 
 
