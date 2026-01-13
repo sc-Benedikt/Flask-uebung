@@ -25,9 +25,10 @@ def test():
                 users = json.load(f)
             if username in users and users[username] == password:
                 session["username"] = username
+                session["password"] = password
                 return render_template("mainmenu.html")
             else:
-                return redirect("/")
+                return render_template("wrong_pw.html")
         else:
             return render_template("eingabefeld.html")
     else:
@@ -56,9 +57,10 @@ def neuer_acc():
 
     if " " in new_user_name or " " in new_user_pw:
          return redirect("/neueracc")
-    
-    users[new_user_name] = new_user_pw
-
+    if new_user_name in users:
+        return render_template("exis_pw.html")
+    else:
+        users[new_user_name] = new_user_pw
 
     with open(r"C:\Übungen Python\git\Flask-uebung\user.json", "w") as f:
         f.write(json.dumps(users, indent=4))
@@ -85,14 +87,29 @@ def delete():
 def ame_aendern():
     return render_template("/rename.html")
 
-@app.route("/")
+@app.route("/geaendert", methods = ["POST"])
 def name_abgeaendert():
     old_name = session.get("username")
-    new_name = request.get("username", " ")
-    with open(USER_FILE, "r", encoding="utf-8") as f:
-        users = json.load(f)
-        users
-    
+    old_password = session.get("password")
+    password = request.form.get("password")
+    if old_password == password:
+        new_name = request.form.get("username", " ")
+        with open(r"C:\Übungen Python\git\Flask-uebung\user.json", "r", encoding="utf-8") as f:
+            users = json.load(f)
+            if new_name in users:
+                return render_template("exis_pw.html")
+            else:
+                users[new_name] = old_password
+
+            del users[old_name]
+            users[new_name] = old_password
+        with open(USER_FILE, "w") as f:
+            f.write(json.dumps(users, indent=4))
+            session["username"] = new_name
+            return redirect("/")
+    else:
+        return render_template("wrong_pw.html")
+        
     
 
 
