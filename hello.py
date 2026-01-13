@@ -55,7 +55,7 @@ def neuer_acc():
             else:
                 users = {}
 
-    if " " in new_user_name or " " in new_user_pw:
+    if " " in new_user_name or " " in new_user_pw or "" == new_user_pw:
          return redirect("/neueracc")
     if new_user_name in users:
         return render_template("exis_pw.html")

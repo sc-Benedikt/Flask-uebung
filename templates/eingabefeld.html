@@ -1,22 +1,39 @@
+<style>
+  body {
+    display: flex;            
+    flex-direction: column;     /* untereinander */
+    justify-content: center;    /* vertikal  */
+    align-items: center;        /* horizontal  */
+
+  }
+
+
+</style>
+
 <body>
-    <h1>Bitte Anmeldedaten eingeben:</h1>
+  <h1>Bitte Anmeldedaten eingeben:</h1>
+
+  <form action="/" method="post">
+
+      <h7>username:</h7>
+      <input name="username" placeholder="username" id="username">
+    
+      <br><br>
+
+      <h7>password:</h7>
+      <input type="password" name="password" placeholder="password" id="password">
+    
+      <br><br>
 
 
-    <form action="/" method="post">
-        <h7>username:</h7>
-        <input name="username" placeholder="username" id="username">
+      <button type="submit">anmelden</button>
+  </form>
 
-        <br><br>
+ 
+  <form action="/keinacc" method="GET">
+    <button type="submit">Keinen account</button>
+  </form>
 
-        <h7>password:</h7>
-        <input type="password" name="password" placeholder="password" id="password">
-
-        <br><br><br><br>
-
-        <button type="submit">anmelden</button>
-    </form>
-
-    <form action="/keinacc" method="GET">
-        <button type="submit">Keinen account</button>
-    </form>
 </body>
+
+

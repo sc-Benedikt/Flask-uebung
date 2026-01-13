@@ -1,17 +1,36 @@
-<body>
+<style>
+  body {
+    display: flex;            
+    flex-direction: column;     /* untereinander */
+    justify-content: center;    /* vertikal  */
+    align-items: center;        /* horizontal  */
 
+  }
+
+
+</style>
+
+<body>
+  
     <h1>Main menu</h1>
+
     <h3>hallo {{ session["username"] }} </h3>
+
 
     <form action="/logout" method="get">
         <button type="submit">logout</button>
     </form>
 
+           
+
     <form action="/daten_aendern" methode="get">
-        <button type="submite">Benutzername ändern</button>
+          <button type="submite">Benutzername ändern</button>  
     </form>
+
 
     <form action="/löschen" methode="get">
         <button type="submite">Account löschen</button>
+
     </form>
+
 </body>

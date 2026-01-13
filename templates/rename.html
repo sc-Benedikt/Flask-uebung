@@ -1,16 +1,30 @@
+<style>
+  body {
+    display: flex;            
+    flex-direction: column;     /* untereinander */
+    justify-content: center;    /* vertikal  */
+    align-items: center;        /* horizontal  */
+
+  }
+
+</style>
+
 <body>
 
-    <h2>Benutzername Ändern</h2>
 
 
     <form action="/geaendert" method="post">
+        <h2>Benutzername Ändern</h2>
+
+            <br>
+
         <h7>Neuer Name:</h7>
         <input name="username" placeholder="username" id="username">
 
         <br><br>
 
         <h7>password:</h7>
-        <input type="password" name="password" placeholder="password" id="password">
+        <input type="password" name="password" placeholder="password zum bestätigen" id="password">
 
         <br><br><br>
 
